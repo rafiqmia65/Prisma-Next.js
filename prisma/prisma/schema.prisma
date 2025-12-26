@@ -14,10 +14,20 @@ datasource db {
 }
 
 model User {
-  id    Int    @id @default(autoincrement())
-  name  String
-  email String @unique
-  posts Post[]
+  id      Int      @id @default(autoincrement())
+  name    String
+  email   String   @unique
+  role    ROLE     @default(USER)
+  posts   Post[]
+  profile Profile?
+}
+
+model Profile {
+  id          Int       @id @default(autoincrement())
+  bio         String?
+  dateOfBirth DateTime?
+  userId      Int       @unique
+  user        User      @relation(fields: [userId], references: [id])
 }
 
 model Post {
@@ -25,9 +35,14 @@ model Post {
   title       String
   content     String?
   isPublished Boolean  @default(false)
-  createAt    DateTime @default(now())
+  createdAt    DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
   userId Int
   author User @relation(fields: [userId], references: [id])
+}
+
+enum ROLE {
+  ADMIN
+  USER
 }
