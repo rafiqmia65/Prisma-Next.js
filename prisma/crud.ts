@@ -27,22 +27,46 @@ async function run() {
 
   // Read Data
 
-  const readData = await prisma.user.findMany({
-    // include: {
-    //   posts: true,
-    //   profile: true,
-    // },
+  // const readData = await prisma.user.findMany({
+  //   // include: {
+  //   //   posts: true,
+  //   //   profile: true,
+  //   // },
 
+  //   select: {
+  //     id: true,
+  //     name: true,
+  //     email: true,
+  //     posts: true,
+  //     profile: true,
+  //   },
+  // });
+
+  // console.dir(readData, { depth: Infinity });
+
+  // Update profile data
+
+  const updateProfile = await prisma.profile.update({
+    where: {
+      userId: 1,
+    },
+    data: {
+      bio: "this is updated bio",
+      dateOfBirth: "2025-12-26T10:59:04.422Z",
+    },
     select: {
       id: true,
-      name: true,
-      email: true,
-      posts: true,
-      profile: true,
+      bio: true,
+      user: {
+        select: {
+          name: true,
+          email: true,
+        },
+      },
     },
   });
 
-  console.dir(readData, { depth: Infinity });
+  console.log("Updated Data: ", updateProfile);
 }
 
 run();
