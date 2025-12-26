@@ -1,3 +1,4 @@
+import { Post } from "./generated/prisma/client";
 import { prisma } from "./lib/prisma";
 
 async function run() {
@@ -7,9 +8,7 @@ async function run() {
   //     email: "rafiq1@gmail.com",
   //   },
   // });
-
   // create Post
-
   // const createPost = await prisma.post.create({
   //   data: {
   //     title: "this is title",
@@ -17,16 +16,33 @@ async function run() {
   //     userId: 1,
   //   },
   // });
-
   // Create Profile
-  const createProfile = await prisma.profile.create({
-    data: {
-      bio: "this is bio",
-      userId: 1,
+  // const createProfile = await prisma.profile.create({
+  //   data: {
+  //     bio: "this is bio",
+  //     userId: 1,
+  //   },
+  // });
+  // console.log("Created User: ", createProfile);
+
+  // Read Data
+
+  const readData = await prisma.user.findMany({
+    // include: {
+    //   posts: true,
+    //   profile: true,
+    // },
+
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      posts: true,
+      profile: true,
     },
   });
 
-  console.log("Created User: ", createProfile);
+  console.dir(readData, { depth: Infinity });
 }
 
 run();
