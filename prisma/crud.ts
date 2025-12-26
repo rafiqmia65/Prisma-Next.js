@@ -24,15 +24,12 @@ async function run() {
   //   },
   // });
   // console.log("Created User: ", createProfile);
-
   // Read Data
-
   // const readData = await prisma.user.findMany({
   //   // include: {
   //   //   posts: true,
   //   //   profile: true,
   //   // },
-
   //   select: {
   //     id: true,
   //     name: true,
@@ -41,32 +38,53 @@ async function run() {
   //     profile: true,
   //   },
   // });
-
   // console.dir(readData, { depth: Infinity });
-
   // Update profile data
+  // const updateProfile = await prisma.profile.update({
+  //   where: {
+  //     userId: 1,
+  //   },
+  //   data: {
+  //     bio: "this is updated bio",
+  //     dateOfBirth: "2025-12-26T10:59:04.422Z",
+  //   },
+  //   select: {
+  //     id: true,
+  //     bio: true,
+  //     user: {
+  //       select: {
+  //         name: true,
+  //         email: true,
+  //       },
+  //     },
+  //   },
+  // });
+  // console.log("Updated Data: ", updateProfile);
 
-  const updateProfile = await prisma.profile.update({
+  // Delete User
+
+  // const deleteUser = await prisma.user.delete({
+  //   where: {
+  //     id: 3,
+  //   },
+  // });
+
+  // console.log(deleteUser);
+
+  const upsertUser = await prisma.user.upsert({
     where: {
-      userId: 1,
+      email: "viola@prisma.io",
     },
-    data: {
-      bio: "this is updated bio",
-      dateOfBirth: "2025-12-26T10:59:04.422Z",
+    update: {
+      name: "Viola the Magnificent 1",
     },
-    select: {
-      id: true,
-      bio: true,
-      user: {
-        select: {
-          name: true,
-          email: true,
-        },
-      },
+    create: {
+      email: "viola@prisma.io",
+      name: "Viola the Magnificent",
     },
   });
 
-  console.log("Updated Data: ", updateProfile);
+  console.log(upsertUser);
 }
 
 run();
