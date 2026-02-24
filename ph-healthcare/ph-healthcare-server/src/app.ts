@@ -1,7 +1,7 @@
 import express, { Application, Request, Response } from "express";
 import indexRoutes from "./app/routes/indexRoutes";
-import { toNodeHandler } from "better-auth/node";
-import { auth } from "./app/lib/auth";
+// import { toNodeHandler } from "better-auth/node";
+// import { auth } from "./app/lib/auth";
 
 const app: Application = express();
 
@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //* Better Auth API endpoint
-app.all("/api/auth/*", toNodeHandler(auth));
+// app.all("/api/auth/*", toNodeHandler(auth));
 
 //* Mount all API routes under /api/v1
 app.use("/api/v1", indexRoutes);

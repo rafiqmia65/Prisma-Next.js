@@ -7,6 +7,7 @@ export const auth = betterAuth({
   database: prismaAdapter(prisma, {
     provider: "postgresql", // or "mysql", "postgresql", ...etc
   }),
+  trustedOrigins: [process.env.BETTER_AUTH_URL ?? "http://localhost:3000","http://localhost:5000", "https://ph-healthcare.vercel.app"],
   user: {
     additionalFields: {
       role: {
@@ -39,4 +40,7 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
+  advanced:{
+    disableCSRFCheck:true
+  }
 });
