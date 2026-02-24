@@ -27,16 +27,28 @@ const registerPatient = async (
     throw new Error("Failed to create user");
   }
 
-  const patient = await prisma.$transaction(async (tx) => {
-    const patientTx = await tx.patient.create({
-      data: {
-        name: payload.name,
-        email: payload.email,
-        userId: result.user.id,
+  let patient;
+  try {
+    patient = await prisma.$transaction(async (tx) => {
+      const patientTx = await tx.patient.create({
+        data: {
+          name: payload.name,
+          email: payload.email,
+          userId: result.user.id,
+        },
+      });
+      return patientTx;
+    });
+  } catch (error) {
+    console.log("Transction error", error)
+    await prisma.user.delete({
+      where: {
+        id: result.user.id,
       },
     });
-    return patientTx;
-  });
+
+    throw error;
+  }
 
   return {
     ...result,
