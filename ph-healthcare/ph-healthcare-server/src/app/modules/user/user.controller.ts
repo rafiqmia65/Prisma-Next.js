@@ -5,16 +5,16 @@ import status from "http-status";
 import { Request, Response } from "express";
 
 const createDoctor = catchAsync(async (req: Request, res: Response) => {
-    const payload = req.body;
-    const result = await UserService.createDoctor(payload);
-    sendResponse(res, {
-        httpStatusCode: status.CREATED,
-        success: true,
-        message: "Doctor created successfully",
-        data: result,
-    });
+  const payload = req.body;
+  const result = await UserService.createDoctor(payload);
+  sendResponse(res, {
+    httpStatusCode: status.CREATED,
+    success: true,
+    message: "Doctor created successfully",
+    data: result,
+  });
 });
 
 export const UserController = {
-    createDoctor,
+  createDoctor,
 };

@@ -5,10 +5,7 @@ export const catchAsync = (fn: RequestHandler) => {
     try {
       await fn(req, res, next);
     } catch (error) {
-      next(error)
+      next(error);
     }
   };
 };
-
-
-

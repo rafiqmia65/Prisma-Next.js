@@ -1,6 +1,8 @@
 import { auth } from "../../lib/auth";
 import { UserStatus } from "../../../../generated/prisma/enums";
 import { prisma } from "../../lib/prisma";
+import AppError from "../../helpers/errorHelpers/AppError";
+import status from "http-status";
 
 interface IRegisterPatientPayload {
   name: string;
@@ -24,7 +26,7 @@ const registerPatient = async (
   });
 
   if (!result.user) {
-    throw new Error("Failed to create user");
+    throw new AppError(status.BAD_REQUEST, "Failed to register patient");
   }
 
   let patient;
@@ -40,7 +42,7 @@ const registerPatient = async (
       return patientTx;
     });
   } catch (error) {
-    console.log("Transction error", error)
+    console.log("Transction error", error);
     await prisma.user.delete({
       where: {
         id: result.user.id,
@@ -71,10 +73,10 @@ const loginUser = async (payload: ILoginUserPayload) => {
   });
 
   if (result.user.status === UserStatus.BLOCKED) {
-    throw new Error("User is blocked");
+    throw new AppError(status.BAD_REQUEST, "User is blocked");
   }
   if (result.user.isDeleted) {
-    throw new Error("User is deleted");
+    throw new AppError(status.BAD_REQUEST, "User is deleted");
   }
 
   return result;

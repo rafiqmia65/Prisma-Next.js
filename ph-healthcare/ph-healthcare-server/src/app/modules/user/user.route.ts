@@ -1,8 +1,14 @@
 import { Router } from "express";
 import { UserController } from "./user.controller";
+import { validateRequest } from "../../middleware/validateRequest";
+import { createDoctorZodSchema } from "./user.validation";
 
-const userRoputes: Router=Router();
+const userRoutes: Router = Router();
 
-userRoputes.post("/create-doctor", UserController.createDoctor);
+userRoutes.post(
+  "/create-doctor",
+  validateRequest(createDoctorZodSchema),
+  UserController.createDoctor,
+);
 
-export default userRoputes;
+export default userRoutes;

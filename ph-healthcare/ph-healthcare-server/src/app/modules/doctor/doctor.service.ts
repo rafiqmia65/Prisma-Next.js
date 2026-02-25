@@ -1,5 +1,7 @@
+import status from "http-status";
 import { prisma } from "../../lib/prisma";
 import { IUpdateDoctorPayload } from "./doctor.interface";
+import AppError from "../../helpers/errorHelpers/AppError";
 
 const getAllDoctors = async () => {
   const doctors = await prisma.doctor.findMany({
@@ -76,17 +78,16 @@ const updateDoctor = async (id: string, payload: IUpdateDoctorPayload) => {
 
 const deleteDoctor = async (id: string) => {
   const result = await prisma.$transaction(async (tx) => {
-
     const hasDoctor = await tx.doctor.findUnique({
       where: { id },
     });
 
     if (!hasDoctor) {
-      throw new Error("Doctor not found");
+      throw new AppError(status.BAD_REQUEST, "Doctor not found");
     }
 
     if (hasDoctor.isDeleted) {
-      throw new Error("Doctor already deleted");
+      throw new AppError(status.BAD_REQUEST, "Doctor already deleted");
     }
 
     await tx.doctor.update({
@@ -120,5 +121,5 @@ export const DoctorService = {
   getAllDoctors,
   getDoctorById,
   updateDoctor,
-  deleteDoctor
+  deleteDoctor,
 };
