@@ -8,7 +8,7 @@ const createDoctor = catchAsync(async (req: Request, res: Response) => {
     const payload = req.body;
     const result = await UserService.createDoctor(payload);
     sendResponse(res, {
-        httpStatusCode: status.OK,
+        httpStatusCode: status.CREATED,
         success: true,
         message: "Doctor created successfully",
         data: result,
