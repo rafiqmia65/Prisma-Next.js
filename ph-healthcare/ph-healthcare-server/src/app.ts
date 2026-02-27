@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from "express";
 import indexRoutes from "./app/routes/indexRoutes";
 import globalErrorHandler from "./app/middleware/globalErrorHandler";
 import notFound from "./app/middleware/notFound";
+import cookieParser from "cookie-parser";
 // import { toNodeHandler } from "better-auth/node";
 // import { auth } from "./app/lib/auth";
 
@@ -12,6 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Middleware to parse JSON bodies
 app.use(express.json());
+
+app.use(cookieParser());
 
 //* Better Auth API endpoint
 // app.all("/api/auth/*", toNodeHandler(auth));
