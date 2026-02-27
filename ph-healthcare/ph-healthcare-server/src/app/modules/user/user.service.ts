@@ -1,23 +1,28 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import status from "http-status";
-import { Role, Specialty } from "../../../../generated/prisma/client";
 import { auth } from "../../lib/auth";
 import { prisma } from "../../lib/prisma";
-import { ICreateDoctorPayload } from "./user.interface";
+import { ICreateAdminPayload, ICreateDoctorPayload } from "./user.interface";
+import { Role, Specialty } from "../../../../generated/prisma/client";
 import AppError from "../../helpers/errorHelpers/AppError";
 
 const createDoctor = async (payload: ICreateDoctorPayload) => {
   const specialties: Specialty[] = [];
 
   for (const specialtyId of payload.specialties) {
-    const existingSpecialty = await prisma.specialty.findUnique({
+    const specialty = await prisma.specialty.findUnique({
       where: {
         id: specialtyId,
       },
     });
-    if (!existingSpecialty) {
-      throw new AppError(status.BAD_REQUEST, "Specialty not found");
+    if (!specialty) {
+      // throw new Error(`Specialty with id ${specialtyId} not found`);
+      throw new AppError(
+        status.NOT_FOUND,
+        `Specialty with id ${specialtyId} not found`,
+      );
     }
-    specialties.push(existingSpecialty);
+    specialties.push(specialty);
   }
 
   const userExists = await prisma.user.findUnique({
@@ -27,15 +32,16 @@ const createDoctor = async (payload: ICreateDoctorPayload) => {
   });
 
   if (userExists) {
-    throw new AppError(status.BAD_REQUEST, "User already exists");
+    // throw new Error("User with this email already exists");
+    throw new AppError(status.CONFLICT, "User with this email already exists");
   }
 
   const userData = await auth.api.signUpEmail({
     body: {
-      name: payload.doctor.name,
       email: payload.doctor.email,
       password: payload.password,
       role: Role.DOCTOR,
+      name: payload.doctor.name,
       needPassWordChanges: true,
     },
   });
@@ -48,14 +54,16 @@ const createDoctor = async (payload: ICreateDoctorPayload) => {
           ...payload.doctor,
         },
       });
-      const doctorSpecialtiesData = specialties.map((specialty) => {
+
+      const doctorSpecialtyData = specialties.map((specialty) => {
         return {
           doctorId: doctorData.id,
           specialtyId: specialty.id,
         };
       });
+
       await tx.doctorSpecialty.createMany({
-        data: doctorSpecialtiesData,
+        data: doctorSpecialtyData,
       });
 
       const doctor = await tx.doctor.findUnique({
@@ -64,13 +72,12 @@ const createDoctor = async (payload: ICreateDoctorPayload) => {
         },
         select: {
           id: true,
+          userId: true,
           name: true,
           email: true,
           profilePhoto: true,
           contactNumber: true,
           address: true,
-          isDeleted: true,
-          deletedAt: true,
           registrationNumber: true,
           experience: true,
           gender: true,
@@ -78,18 +85,19 @@ const createDoctor = async (payload: ICreateDoctorPayload) => {
           qualification: true,
           currentWorkingPlace: true,
           designation: true,
-          averageRating: true,
           createdAt: true,
           updatedAt: true,
-          userId: true,
           user: {
             select: {
               id: true,
-              name: true,
               email: true,
+              name: true,
               role: true,
               status: true,
+              emailVerified: true,
+              image: true,
               isDeleted: true,
+              deletedAt: true,
               createdAt: true,
               updatedAt: true,
             },
@@ -98,8 +106,8 @@ const createDoctor = async (payload: ICreateDoctorPayload) => {
             select: {
               specialty: {
                 select: {
-                  id: true,
                   title: true,
+                  id: true,
                 },
               },
             },
@@ -109,8 +117,54 @@ const createDoctor = async (payload: ICreateDoctorPayload) => {
 
       return doctor;
     });
+
     return result;
   } catch (error) {
+    console.log("Transaction error : ", error);
+    await prisma.user.delete({
+      where: {
+        id: userData.user.id,
+      },
+    });
+    throw error;
+  }
+};
+
+const createAdmin = async (payload: ICreateAdminPayload) => {
+  //TODO: Validate who is creating the admin user. Only super admin can create admin user and only super admin can create super admin user but admin user cannot create super admin user
+
+  const userExists = await prisma.user.findUnique({
+    where: {
+      email: payload.admin.email,
+    },
+  });
+
+  if (userExists) {
+    throw new AppError(status.CONFLICT, "User with this email already exists");
+  }
+
+  const { admin, role, password } = payload;
+
+  const userData = await auth.api.signUpEmail({
+    body: {
+      ...admin,
+      password,
+      role,
+      needPassWordChanges: true,
+    },
+  });
+
+  try {
+    const adminData = await prisma.admin.create({
+      data: {
+        userId: userData.user.id,
+        ...admin,
+      },
+    });
+
+    return adminData;
+  } catch (error: any) {
+    console.log("Error creating admin: ", error);
     await prisma.user.delete({
       where: {
         id: userData.user.id,
@@ -122,4 +176,5 @@ const createDoctor = async (payload: ICreateDoctorPayload) => {
 
 export const UserService = {
   createDoctor,
+  createAdmin,
 };
