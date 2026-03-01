@@ -3,7 +3,6 @@ import status from "http-status";
 import { catchAsync } from "../../shared/catchAsync";
 import { sendResponse } from "../../shared/sendResponse";
 import { AdminService } from "./admin.service";
-import AppError from "../../helpers/errorHelpers/AppError";
 
 const getAllAdmins = catchAsync(async (req: Request, res: Response) => {
   const result = await AdminService.getAllAdmins();
@@ -45,12 +44,7 @@ const updateAdmin = catchAsync(async (req: Request, res: Response) => {
 
 const deleteAdmin = catchAsync(async (req: Request, res: Response) => {
   const { id } = req.params;
-
   const user = req.user;
-
-  if (!user) {
-    throw new AppError(status.UNAUTHORIZED, "Unauthorized access");
-  }
 
   const result = await AdminService.deleteAdmin(id as string, user);
 

@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextFunction, Request, Response } from "express";
 import status from "http-status";
-import { Role, UserStatus } from "../../../generated/prisma/enums";
-import { CookieUtils } from "../utils/cookie";
-import { prisma } from "../lib/prisma";
-import AppError from "../helpers/errorHelpers/AppError";
-import { jwtUtils } from "../utils/jwt";
 import { envVars } from "../config/env";
+import { prisma } from "../lib/prisma";
+import { CookieUtils } from "../utils/cookie";
+import { jwtUtils } from "../utils/jwt";
+import { Role, UserStatus } from "../../../generated/prisma/enums";
+import AppError from "../helpers/errorHelpers/AppError";
 
 export const checkAuth =
   (...authRoles: Role[]) =>
@@ -77,6 +77,12 @@ export const checkAuth =
               "Forbidden access! You do not have permission to access this resource.",
             );
           }
+
+          req.user = {
+            userId: user.id,
+            role: user.role,
+            email: user.email,
+          };
         }
 
         const accessToken = CookieUtils.getCookie(req, "accessToken");
