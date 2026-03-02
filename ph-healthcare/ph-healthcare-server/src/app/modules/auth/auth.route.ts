@@ -12,5 +12,6 @@ AuthRoutes.get(
   checkAuth(Role.ADMIN, Role.DOCTOR, Role.PATIENT, Role.SUPER_ADMIN),
   AuthController.getMe,
 );
+AuthRoutes.post("/refresh-token", AuthController.getNewToken);
 
 export default AuthRoutes;
