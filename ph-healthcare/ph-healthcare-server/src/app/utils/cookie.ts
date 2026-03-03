@@ -13,8 +13,8 @@ const getCookie = (req: Request, key: string) => {
   return req.cookies[key];
 };
 
-const clearCookie = (res: Response, key: string) => {
-  res.clearCookie(key);
+const clearCookie = (res: Response, key: string, options: CookieOptions) => {
+  res.clearCookie(key, options);
 };
 
 export const CookieUtils = {

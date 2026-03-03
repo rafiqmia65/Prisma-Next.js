@@ -13,5 +13,15 @@ AuthRoutes.get(
   AuthController.getMe,
 );
 AuthRoutes.post("/refresh-token", AuthController.getNewToken);
+AuthRoutes.post(
+  "/change-password",
+  checkAuth(Role.ADMIN, Role.DOCTOR, Role.PATIENT, Role.SUPER_ADMIN),
+  AuthController.changePassword,
+);
+AuthRoutes.post(
+  "/logout",
+  checkAuth(Role.ADMIN, Role.DOCTOR, Role.PATIENT, Role.SUPER_ADMIN),
+  AuthController.logoutUser,
+);
 
 export default AuthRoutes;

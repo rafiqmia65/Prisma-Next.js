@@ -3,6 +3,7 @@ import { prismaAdapter } from "better-auth/adapters/prisma";
 import { prisma } from "./prisma";
 import { Role, UserStatus } from "../../../generated/prisma/enums";
 import { envVars } from "../config/env";
+import { bearer } from "better-auth/plugins";
 
 export const auth = betterAuth({
   database: prismaAdapter(prisma, {
@@ -13,6 +14,7 @@ export const auth = betterAuth({
     "http://localhost:5000",
     "https://ph-healthcare.vercel.app",
   ],
+  plugins: [bearer()],
   user: {
     additionalFields: {
       role: {
