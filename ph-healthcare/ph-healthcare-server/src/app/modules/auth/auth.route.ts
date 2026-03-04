@@ -24,4 +24,12 @@ AuthRoutes.post(
   AuthController.logoutUser,
 );
 
+AuthRoutes.post("/verify-email", AuthController.verifyEmail);
+AuthRoutes.post("/forget-password", AuthController.forgetPassword);
+AuthRoutes.post("/reset-password", AuthController.resetPassword);
+
+AuthRoutes.get("/login/google", AuthController.googleLogin);
+AuthRoutes.get("/google/success", AuthController.googleLoginSuccess);
+AuthRoutes.get("/oauth/error", AuthController.handleOAuthError);
+
 export default AuthRoutes;
