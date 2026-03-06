@@ -33,8 +33,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Middleware to parse JSON bodies
 app.use(express.json());
-
 app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
 
 //* Better Auth API endpoint
 app.all("/api/auth/*", toNodeHandler(auth));
