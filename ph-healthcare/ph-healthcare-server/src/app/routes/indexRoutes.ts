@@ -4,6 +4,7 @@ import AuthRoutes from "../modules/auth/auth.route";
 import doctorRoutes from "../modules/doctor/doctor.route";
 import userRoutes from "../modules/user/user.route";
 import AdminRoutes from "../modules/admin/admin.route";
+import doctorScheduleRoutes from "../modules/doctorSchedule/doctorSchedule.route";
 
 //  type the router
 const indexRoutes: Router = Router();
@@ -22,5 +23,8 @@ indexRoutes.use("/specialties", SpecialtyRoutes);
 
 // Doctor Route
 indexRoutes.use("/doctors", doctorRoutes);
+
+// Doctor Schedule Route
+indexRoutes.use("/doctor-schedules", doctorScheduleRoutes);
 
 export default indexRoutes;
