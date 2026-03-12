@@ -26,9 +26,16 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/auth/register",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "auth", "register"]
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "register"
+              ]
             }
           },
           "response": []
@@ -50,9 +57,16 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/auth/login",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "auth", "login"]
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
             }
           },
           "response": []
@@ -74,9 +88,16 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/auth/login",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "auth", "login"]
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
             }
           },
           "response": []
@@ -98,9 +119,16 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/auth/login",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "auth", "login"]
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ]
             }
           },
           "response": []
@@ -113,9 +141,16 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/auth/me",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "auth", "me"]
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "me"
+              ]
             }
           },
           "response": []
@@ -131,9 +166,16 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/auth/refresh-token",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "auth", "refresh-token"]
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "refresh-token"
+              ]
             }
           },
           "response": []
@@ -158,9 +200,16 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/auth/change-password",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "auth", "change-password"]
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "change-password"
+              ]
             }
           },
           "response": []
@@ -176,9 +225,16 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/auth/logout",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "auth", "logout"]
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "logout"
+              ]
             }
           },
           "response": []
@@ -200,9 +256,16 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/auth/verify-email",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "auth", "verify-email"]
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "verify-email"
+              ]
             }
           },
           "response": []
@@ -224,9 +287,16 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/auth/forget-password",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "auth", "forget-password"]
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "forget-password"
+              ]
             }
           },
           "response": []
@@ -248,9 +318,16 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/auth/reset-password",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "auth", "reset-password"]
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "reset-password"
+              ]
             }
           },
           "response": []
@@ -263,9 +340,17 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/auth/login/google",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "auth", "login", "google"]
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login",
+                "google"
+              ]
             }
           },
           "response": []
@@ -300,9 +385,15 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/specialties",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "specialties"]
+              "path": [
+                "api",
+                "v1",
+                "specialties"
+              ]
             }
           },
           "response": []
@@ -327,9 +418,15 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/specialties",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "specialties"]
+              "path": [
+                "api",
+                "v1",
+                "specialties"
+              ]
             }
           },
           "response": []
@@ -351,7 +448,9 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/specialties/019c2965-1506-706d-8613-38de4bee68cc",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
               "path": [
                 "api",
@@ -385,9 +484,16 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/users/create-doctor",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "users", "create-doctor"]
+              "path": [
+                "api",
+                "v1",
+                "users",
+                "create-doctor"
+              ]
             }
           },
           "response": []
@@ -405,9 +511,15 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/doctors?gender=MALE",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "doctors"],
+              "path": [
+                "api",
+                "v1",
+                "doctors"
+              ],
               "query": [
                 {
                   "key": "page",
@@ -511,9 +623,15 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/schedules",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "schedules"]
+              "path": [
+                "api",
+                "v1",
+                "schedules"
+              ]
             }
           },
           "response": []
@@ -526,9 +644,15 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/schedules",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "schedules"]
+              "path": [
+                "api",
+                "v1",
+                "schedules"
+              ]
             }
           },
           "response": []
@@ -541,7 +665,9 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/schedules/019c614a-2362-761d-b021-771beb22a4c5",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
               "path": [
                 "api",
@@ -570,7 +696,9 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/schedules/019c614a-2362-761d-b021-771beb22a4c5",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
               "path": [
                 "api",
@@ -590,7 +718,9 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/schedules/019c614a-2362-761d-b021-771beb22a4c5",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
               "path": [
                 "api",
@@ -624,7 +754,9 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/doctor-schedules/create-my-doctor-schedule",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
               "path": [
                 "api",
@@ -644,9 +776,15 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/doctor-schedules",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "doctor-schedules"]
+              "path": [
+                "api",
+                "v1",
+                "doctor-schedules"
+              ]
             }
           },
           "response": []
@@ -659,7 +797,9 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/doctor-schedules/019c4eef-9c4f-75c5-baa8-5802f28bbbb8/schedule/019c614a-2141-7425-94aa-720140d05be3",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
               "path": [
                 "api",
@@ -681,9 +821,16 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/doctor-schedules/my-doctor-schedules",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "doctor-schedules", "my-doctor-schedules"]
+              "path": [
+                "api",
+                "v1",
+                "doctor-schedules",
+                "my-doctor-schedules"
+              ]
             }
           },
           "response": []
@@ -705,7 +852,9 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/doctor-schedules/update-my-doctor-schedule",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
               "path": [
                 "api",
@@ -725,7 +874,9 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/doctor-schedules/delete-my-doctor-schedule/45453654567345",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
               "path": [
                 "api",
@@ -760,9 +911,16 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/appointments/book-appointment",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "appointments", "book-appointment"]
+              "path": [
+                "api",
+                "v1",
+                "appointments",
+                "book-appointment"
+              ]
             }
           },
           "response": []
@@ -775,9 +933,16 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/appointments/my-appointments",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "appointments", "my-appointments"]
+              "path": [
+                "api",
+                "v1",
+                "appointments",
+                "my-appointments"
+              ]
             }
           },
           "response": []
@@ -790,7 +955,9 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/appointments/my-single-appointment/45454e574676",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
               "path": [
                 "api",
@@ -811,9 +978,16 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/appointments/all-appointments",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "appointments", "all-appointments"]
+              "path": [
+                "api",
+                "v1",
+                "appointments",
+                "all-appointments"
+              ]
             }
           },
           "response": []
@@ -826,7 +1000,9 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/appointments/change-appointment-status/34635635346",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
               "path": [
                 "api",
@@ -856,7 +1032,9 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/appointments/book-appointment-with-pay-later",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
               "path": [
                 "api",
@@ -876,7 +1054,9 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/appointments/initiate-payment/019c616c-5889-7636-8a06-92db8fad1bc9",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
               "path": [
                 "api",
@@ -932,9 +1112,16 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/patients/update-my-profile",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "patients", "update-my-profile"]
+              "path": [
+                "api",
+                "v1",
+                "patients",
+                "update-my-profile"
+              ]
             }
           },
           "response": []
@@ -961,9 +1148,15 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/prescriptions",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "prescriptions"]
+              "path": [
+                "api",
+                "v1",
+                "prescriptions"
+              ]
             }
           },
           "response": []
@@ -976,9 +1169,16 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/prescriptions/my-prescriptions",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "prescriptions", "my-prescriptions"]
+              "path": [
+                "api",
+                "v1",
+                "prescriptions",
+                "my-prescriptions"
+              ]
             }
           },
           "response": []
@@ -991,9 +1191,15 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/prescriptions",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "prescriptions"]
+              "path": [
+                "api",
+                "v1",
+                "prescriptions"
+              ]
             }
           },
           "response": []
@@ -1006,9 +1212,16 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/prescriptions/435564357",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "prescriptions", "435564357"]
+              "path": [
+                "api",
+                "v1",
+                "prescriptions",
+                "435564357"
+              ]
             }
           },
           "response": []
@@ -1021,9 +1234,16 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/prescriptions/34435643567",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "prescriptions", "34435643567"]
+              "path": [
+                "api",
+                "v1",
+                "prescriptions",
+                "34435643567"
+              ]
             }
           },
           "response": []
@@ -1041,9 +1261,15 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/reviews",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "reviews"]
+              "path": [
+                "api",
+                "v1",
+                "reviews"
+              ]
             }
           },
           "response": []
@@ -1056,9 +1282,16 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/reviews/my-reviews",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "reviews", "my-reviews"]
+              "path": [
+                "api",
+                "v1",
+                "reviews",
+                "my-reviews"
+              ]
             }
           },
           "response": []
@@ -1071,9 +1304,15 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/reviews",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "reviews"]
+              "path": [
+                "api",
+                "v1",
+                "reviews"
+              ]
             }
           },
           "response": []
@@ -1086,9 +1325,16 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/reviews/34634564356",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "reviews", "34634564356"]
+              "path": [
+                "api",
+                "v1",
+                "reviews",
+                "34634564356"
+              ]
             }
           },
           "response": []
@@ -1101,9 +1347,16 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/reviews/34565456",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "reviews", "34565456"]
+              "path": [
+                "api",
+                "v1",
+                "reviews",
+                "34565456"
+              ]
             }
           },
           "response": []
@@ -1121,9 +1374,15 @@
             "url": {
               "raw": "http://localhost:5000/api/v1/stats",
               "protocol": "http",
-              "host": ["localhost"],
+              "host": [
+                "localhost"
+              ],
               "port": "5000",
-              "path": ["api", "v1", "stats"],
+              "path": [
+                "api",
+                "v1",
+                "stats"
+              ],
               "query": [
                 {
                   "key": "gender",

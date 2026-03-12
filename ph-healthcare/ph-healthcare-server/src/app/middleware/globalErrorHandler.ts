@@ -7,6 +7,7 @@ import { TErrorResponse, TErrorSources } from "../interfaces/error.interface";
 import { handleZodError } from "../helpers/errorHelpers/handleZodError";
 import AppError from "../helpers/errorHelpers/AppError";
 import { deleteFileFromCloudinary } from "../config/cloudinary.config";
+import { deleteUploadedFilesFromGlobalErrorHandler } from "../utils/deleteUploadedFilesFromGlobalErrorHandler";
 
 const globalErrorHandler = async (
   err: unknown,
@@ -18,14 +19,15 @@ const globalErrorHandler = async (
     console.log("Error from Global Error Handler", err);
   }
 
-  if (req.file) {
-    await deleteFileFromCloudinary(req.file.path);
-  }
+  // if(req.file){
+  //     await deleteFileFromCloudinary(req.file.path)
+  // }
 
-  if (req.files && Array.isArray(req.files) && req.files.length > 0) {
-    const imageUrls = req.files.map((file) => file.path);
-    await Promise.all(imageUrls.map((url) => deleteFileFromCloudinary(url)));
-  }
+  // if(req.files && Array.isArray(req.files) && req.files.length > 0){
+  //     const imageUrls = req.files.map((file) => file.path);
+  //     await Promise.all(imageUrls.map(url => deleteFileFromCloudinary(url)));
+  // }
+  await deleteUploadedFilesFromGlobalErrorHandler(req);
 
   let errorSources: TErrorSources[] = [];
   let statusCode: number = status.INTERNAL_SERVER_ERROR;
