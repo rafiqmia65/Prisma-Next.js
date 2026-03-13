@@ -1,21 +1,30 @@
-import express, { Application, Request, Response } from "express";
-import indexRoutes from "./app/routes/indexRoutes";
-import globalErrorHandler from "./app/middleware/globalErrorHandler";
-import notFound from "./app/middleware/notFound";
-import cookieParser from "cookie-parser";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { toNodeHandler } from "better-auth/node";
-import { auth } from "./app/lib/auth";
-import path from "node:path";
+import cookieParser from "cookie-parser";
 import cors from "cors";
-import { envVars } from "./app/config/env";
+import express, { Application, Request, Response } from "express";
+import cron from "node-cron";
+import path from "path";
 import qs from "qs";
+import { envVars } from "./app/config/env";
+import { auth } from "./app/lib/auth";
+import { globalErrorHandler } from "./app/middleware/globalErrorHandler";
+import { PaymentController } from "./app/modules/payment/payment.controller";
+import { AppointmentService } from "./app/modules/appointment/appointment.service";
+import indexRoutes from "./app/routes/indexRoutes";
+import notFound from "./app/middleware/notFound";
 
 const app: Application = express();
-
 app.set("query parser", (str: string) => qs.parse(str));
 
 app.set("view engine", "ejs");
 app.set("views", path.resolve(process.cwd(), `src/app/templates`));
+
+app.post(
+  "/webhook",
+  express.raw({ type: "application/json" }),
+  PaymentController.handleStripeWebhookEvent,
+);
 
 app.use(
   cors({
@@ -31,7 +40,9 @@ app.use(
   }),
 );
 
-// Enable URL-encoded from data passing
+app.use("/api/auth", toNodeHandler(auth));
+
+// Enable URL-encoded form data parsing
 app.use(express.urlencoded({ extended: true }));
 
 // Middleware to parse JSON bodies
@@ -39,18 +50,25 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 
-//* Better Auth API endpoint
-app.all("/api/auth/*", toNodeHandler(auth));
+cron.schedule("*/25 * * * *", async () => {
+  try {
+    console.log("Running cron job to cancel unpaid appointments...");
+    await AppointmentService.cancelUnpaidAppointments();
+  } catch (error: any) {
+    console.error(
+      "Error occurred while canceling unpaid appointments:",
+      error.message,
+    );
+  }
+});
 
-//* Mount all API routes under /api/v1
 app.use("/api/v1", indexRoutes);
 
-// Basic Route
-
-app.get("/", (req: Request, res: Response) => {
-  res.status(200).json({
-    status: "OK",
-    message: "PH Healthcare server is running successfully",
+// Basic route
+app.get("/", async (req: Request, res: Response) => {
+  res.status(201).json({
+    success: true,
+    message: "API is working",
   });
 });
 

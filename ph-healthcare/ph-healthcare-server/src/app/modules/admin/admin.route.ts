@@ -29,4 +29,15 @@ AdminRoutes.delete(
   AdminController.deleteAdmin,
 );
 
+AdminRoutes.patch(
+  "/change-user-status",
+  checkAuth(Role.SUPER_ADMIN, Role.ADMIN),
+  AdminController.changeUserStatus,
+);
+AdminRoutes.patch(
+  "/change-user-role",
+  checkAuth(Role.SUPER_ADMIN),
+  AdminController.changeUserRole,
+);
+
 export default AdminRoutes;
