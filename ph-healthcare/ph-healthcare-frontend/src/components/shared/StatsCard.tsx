@@ -4,20 +4,15 @@ import { createElement } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
 interface StatsCardProps {
-  title: string;
-  value: string | number;
-  iconName: string;
-  description?: string;
-  className?: string;
+    title : string;
+    value : string | number;
+    iconName : string;
+    description ?: string
+    className ?: string;
 }
 
-const StatsCard = ({
-  title,
-  value,
-  iconName,
-  description,
-  className,
-}: StatsCardProps) => {
+
+const StatsCard = ({title, value, iconName, description, className}: StatsCardProps) => {
   return (
     <Card className={cn("hover:shadow-md transition-shadow", className)}>
       <CardHeader className="flex flex-row items-center justify-between pb-2">
@@ -29,14 +24,16 @@ const StatsCard = ({
 
       <CardContent className="space-y-1">
         <div className="text-2xl font-bold">{value}</div>
-        {description && (
-          <p className="text-xs font-medium text-muted-foreground">
-            {description}
-          </p>
-        )}
+        {
+            description && (
+                <p className="text-xs font-medium text-muted-foreground">
+                    {description}
+                </p>
+            )
+        }
       </CardContent>
     </Card>
   );
-};
+}
 
-export default StatsCard;
+export default StatsCard
