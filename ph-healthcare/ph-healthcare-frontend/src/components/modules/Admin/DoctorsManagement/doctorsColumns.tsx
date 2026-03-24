@@ -12,42 +12,40 @@ export const doctorColumns: ColumnDef<IDoctor>[] = [
     id: "name",
     accessorKey: "name",
     header: "Doctor",
-    cell: ({ row }) => ( 
-        <UserInfoCell
-            name={row.original.name}
-            email={row.original.email}
-            profilePhoto={row.original.profilePhoto}
-        />
+    cell: ({ row }) => (
+      <UserInfoCell
+        name={row.original.name}
+        email={row.original.email}
+        profilePhoto={row.original.profilePhoto}
+      />
     ),
   },
   {
     id: "specialties",
     accessorKey: "specialties",
+    enableSorting: false,
     header: "Specialties",
     cell: ({ row }) => {
-        const specialties = row.original.specialties
+      const specialties = row.original.specialties;
 
-        if(!specialties || specialties.length === 0) {
-            return (
-                <span className="text-xs text-muted-foreground">No Specialties</span>
-            )
-        }
-
-
+      if (!specialties || specialties.length === 0) {
         return (
-            <div>
-                {
-                specialties.map(({specialty}, id) => {
-                    const title = specialty.title || "N/A";
-                    return (
-                        <Badge variant={"secondary"} key={id}>
-                            {title}
-                        </Badge>
-                    )
-                })
-                }
-            </div>
-        )
+          <span className="text-xs text-muted-foreground">No Specialties</span>
+        );
+      }
+
+      return (
+        <div>
+          {specialties.map(({ specialty }, id) => {
+            const title = specialty.title || "N/A";
+            return (
+              <Badge variant={"secondary"} key={id}>
+                {title}
+              </Badge>
+            );
+          })}
+        </div>
+      );
     },
   },
   {
@@ -116,9 +114,7 @@ export const doctorColumns: ColumnDef<IDoctor>[] = [
     accessorKey: "user.status",
     header: "Status",
     cell: ({ row }) => {
-      return (
-        <StatusBadgeCell status={row.original.user.status} />
-      );
+      return <StatusBadgeCell status={row.original.user.status} />;
     },
   },
   {
